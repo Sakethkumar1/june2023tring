@@ -1,9 +1,26 @@
-import java.util.Scanner;
+import java.util.*;
+class AgeDoesNotFitException extends Exception {
+String msg;
+AgeDoesNotFitException(String msg){
+super(msg);
+this.msg=msg;
+}
+public String toString(){
+return msg;
+}
+}
 class Main{
-public static void main(String args[])
-{
+public static void main(String args[]){
 Scanner sc=new Scanner(System.in);
-System.out.print(3/2*60*60);
-System.out.print(60*60*3/2);
+int age=sc.nextInt();
+try{
+if(age<18){
+throw new AgeDoesNotFitException("Entered age doesn't fulfill the required age limit");
+}
+}
+catch(AgeDoesNotFitException ex){
+System.out.println(ex);
+System.out.println(ex.getMessage());
+}
 }
 }
